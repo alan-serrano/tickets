@@ -1,5 +1,5 @@
 ## Tickets Generator
-
+ 
 This app generates tickets in order to print them. The basic information that a ticket should have is:
 
 - Title

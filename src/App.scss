@@ -1,3 +1,5 @@
+/* General Styles of the App*/
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -7,18 +9,11 @@ body {
     padding-bottom: 2rem;
 }
 
-h1 {
-    @media print {
-        display: none;
-    }
-}
-
-.form {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    @media print{
-        display: none;
-    }
+.container {
+    max-width: 1080px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wrapper-tickets {
@@ -29,77 +24,37 @@ h1 {
     flex-wrap: wrap;
 }
 
-.ticket {
-    border:  1px dashed black;
-    width: 4.08in;
-    min-width: 4.08in;
-    position: relative;
-    padding: 10px;
-    padding-right: 70px;
-    height: 250px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
+.col {
+    flex-grow: 1;
+    flex-basis: 0;
+}
 
-    .wrapper-logo {
-        flex-basis: 30%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 75%;
+h1 {
+    text-align: center;
 
-        img {
-            width: 100%;
-        }
+    @media print {
+        display: none;
     }
+}
 
-    .info {
-        flex-basis: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 10px;
-        height: 75%;
+/* Visibility and display */
 
-        h2.title {
-            text-align: center;
-            font-family: 'Sriracha', cursive;
-        }
+.visible {
+    visibility: visible !important;
+}
 
-        p.description {
-            text-align: center;
-        }
-    }
+.invisible {
+    visibility: hidden !important;
+}
 
-    .detail {
-        width: 100%;
-        height: 25%;
-        border-top: 1px solid black;
-        
-        p {
-            margin-bottom: 0;
-            text-align: center;
+.d-block {
+    display: block !important;
+}
 
-            &.admitted {
-                font-size: 20px;
-                font-weight: bold;
-            }
-        }
-    }
+.d-flex {
+    display: flex !important;
+}
 
-    .code {
-        position: absolute;
-        top: 0;
-        left: 100%;
-        height: 60px;
-        width: 250px;
-        transform-origin: 0 0;
-        transform: rotate(90deg);
-        text-align: center;
-        line-height: 60px;
-        border-bottom: 1px dashed black;
-    }
+.d-none {
+    display: none !important;
 }

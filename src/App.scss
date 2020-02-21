@@ -1,0 +1,60 @@
+/* General Styles of the App*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.container {
+    max-width: 1080px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper-tickets {
+    max-width: 8.5in;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+h1 {
+    text-align: center;
+
+    @media print {
+        display: none;
+    }
+}
+
+/* Visibility and display */
+
+.visible {
+    visibility: visible !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-none {
+    display: none !important;
+}

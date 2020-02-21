@@ -3,42 +3,73 @@ import './form.scss';
 
 class Form extends React.Component {
 
-    render() {
+    state = {
+        inputTitle: '',
+        inputLogoUrl: '',
+        inputDate: '',
+        inputQuantity: '',
+        inputDescription: '',
+        textarea: ''
+    };
 
+    onInputChange = (e) => {
+        const {target: {id, value}} = e;
+
+        this.setState({
+            [id]: value
+        });
+
+        this.props.onInputsChange(id, value);
+    }
+
+    onFormSubmit = (e) => {
+        e.preventDefault();
+        this.props.onFormSubmit(this.state.inputQuantity);
+    }
+
+    render() {
         return(
             <section className="form">
                 <div className="container">
-                    <form>
+                    <form onSubmit={this.onFormSubmit}>
                         <div className="form-row">
                             <div className="form-group col">
-                                <label for="input-title">Title</label>
-                                <input class="form-control" type="text" id="input-title" />
+                                <label htmlFor="inputTitle">Title</label>
+                                <input className="form-control" type="text" onChange={this.onInputChange} value={this.state.inputTitle}  id="inputTitle" />
                             </div>
     
                             <div className="form-group col">
-                                <label for="input-title">Logo Url</label>
-                                <input class="form-control" type="text" id="input-title" />
+                                <label htmlFor="inputLogoUrl">Logo Url</label>
+                                <input className="form-control" type="text" id="inputLogoUrl"
+                                    onChange={this.onInputChange} value={this.state.inputLogoUrl}
+                                />
                             </div>
         
                         </div>
 
                         <div className="form-row">
                             <div className="form-group col">
-                                <label for="input-date">Date</label>
-                                <input class="form-control" type="text" id="input-date" />
+                                <label htmlFor="inputDate">Date</label>
+                                <input className="form-control" type="text" id="inputDate" 
+                                    onChange={this.onInputChange} value={this.state.inputDate}
+                                />
                             </div>
     
                             <div className="form-group col">
-                                <label for="input-number">Quantity</label>
-                                <input class="form-control" type="number" min="0" id="input-number"/>
+                                <label htmlFor="inputQuantity">Quantity</label>
+                                <input className="form-control" type="number" min="1" id="inputQuantity"
+                                    onChange={this.onInputChange} value={this.state.inputQuantity}
+                                />
                             </div>
                         </div>
 
                         <div className="form-group">
-                            <label for="textarea-description">Description</label>
-                            <textarea class="form-control" rows="4" id="textarea-description"></textarea>
+                            <label htmlFor="textarea">Description</label>
+                            <textarea className="form-control" rows="4" id="textarea"
+                                 onChange={this.onInputChange} value={this.state.textarea}
+                            />
                         </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" className="btn btn-success">Generate</button>
                     </form>
                 </div>
             </section>

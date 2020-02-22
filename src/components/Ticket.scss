@@ -11,6 +11,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    
+    @media print {
+        
+    }
 
     .wrapper-logo {
         flex-basis: 30%;

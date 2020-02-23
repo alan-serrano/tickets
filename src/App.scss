@@ -16,12 +16,25 @@ body {
     margin-right: auto;
 }
 
+// General styles for printing
+@page {
+    size: Letter;
+}
+
+/* -------------------------- */
+
 .wrapper-tickets {
     max-width: 8.5in;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+    @media print {
+        page-break-before: always;
+        max-width: none;
+    }
 }
 
 .col {

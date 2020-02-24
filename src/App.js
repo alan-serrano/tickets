@@ -11,7 +11,8 @@ class App extends React.Component {
         inputTitle: '',
         inputLogoUrl: '',
         inputDate: '',
-        inputQuantity: 0,
+        inputQuantity: '',
+        inputStartNo: '',
         inputDescription: '',
         quantity: 0,
         textarea: '',
@@ -31,7 +32,7 @@ class App extends React.Component {
     // Function that change the state of the Form Component
     onFormSubmit = (quantity) => {
         this.setState( state => ({
-            quantity: quantity,
+            quantity: parseInt(quantity),
             isFormSubmited: !state.isFormSubmited,
             isPreviewMode: !state.isPreviewMode
         }));
@@ -53,7 +54,11 @@ class App extends React.Component {
     // Function that generate tickets from the amount given 
     generateTickets() {
         var wrappers = [];
-        var counter = 1;
+        var startPoint = parseInt(this.state.inputStartNo) || 1;
+        var endPoint = startPoint + this.state.quantity - 1;
+        var counter = startPoint;
+
+        console.log(startPoint, this.state.quantity);
         
         // If quantity is empty
         if( !this.state.quantity || this.state.isPreviewMode ) {
@@ -74,7 +79,7 @@ class App extends React.Component {
             for (let i = 0; i < this.state.quantity / 6; i++) {
                 let tickets = []; // Empty array that store the tickets generated
 
-                for (let j = 0; j < 6 && counter <= this.state.quantity; j++) {
+                for (let j = 0; j < 6 && counter <= endPoint; j++) {
                     // Formating code
                     let code = '0000';
                     let tmpString = '' + counter;

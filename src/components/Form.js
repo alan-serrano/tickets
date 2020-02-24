@@ -22,9 +22,28 @@ class Form extends React.Component {
         this.props.onInputsChange(id, value);
     }
 
+    // Function that push, on submit, the quantity to App Component
     onFormSubmit = (e) => {
         e.preventDefault();
         this.props.onFormSubmit(this.state.inputQuantity);
+    }
+
+    // If App Component has a previus state of Form, mount it with that state
+    componentWillMount() {
+        // Creating an empty object to store the state of App Component
+        const state = {};
+
+        //State of App component
+        const stateAppComponent = this.props.onFormInitialize()
+
+        //Filtering keys that have this state of the Form component
+        for (const key in stateAppComponent) {
+            if (this.state.hasOwnProperty(key)) {
+                state[key] = stateAppComponent[key]
+            }
+        }
+        
+        this.setState(state);
     }
 
     render() {

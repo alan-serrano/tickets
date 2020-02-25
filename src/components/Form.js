@@ -9,6 +9,7 @@ class Form extends React.Component {
         inputDate: '',
         inputQuantity: '',
         inputDescription: '',
+        inputStartNo: '',
         textarea: ''
     };
 
@@ -71,6 +72,13 @@ class Form extends React.Component {
                                 <label htmlFor="inputDate">Date</label>
                                 <input className="form-control" type="text" id="inputDate" 
                                     onChange={this.onInputChange} value={this.state.inputDate}
+                                />
+                            </div>
+    
+                            <div className="form-group col">
+                                <label htmlFor="inputStartNo">Start at N°</label>
+                                <input className="form-control" type="number" min="1" id="inputStartNo"
+                                    onChange={this.onInputChange} value={this.state.inputStartNo}
                                 />
                             </div>
     

@@ -1,5 +1,5 @@
 import React from 'react';
-import './ticket.scss';
+import './Ticket.scss';
 
 function Ticket(props) {
 

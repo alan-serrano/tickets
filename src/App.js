@@ -7,31 +7,56 @@ import Ticket from './components/Ticket';
 class App extends React.Component {
 
     state = {
+        // State of inputs of the form
         inputTitle: '',
         inputLogoUrl: '',
         inputDate: '',
         inputQuantity: 0,
         inputDescription: '',
         quantity: 0,
-        textarea: ''
+        textarea: '',
+
+        // State of form and preview mode
+        isFormSubmited: false,
+        isPreviewMode: true
     }
 
+    // Function that pull values from Form Component
     onInputsChange = (id, value) => {
         if(this.state.hasOwnProperty(id)) {
             this.setState({[id]: value})
         }
     }
 
+    // Function that change the state of the Form Component
     onFormSubmit = (quantity) => {
-        this.setState({quantity: quantity})
+        this.setState( state => ({
+            quantity: quantity,
+            isFormSubmited: !state.isFormSubmited,
+            isPreviewMode: !state.isPreviewMode
+        }));
     }
 
+    // Function that go back to preview mode
+    onBtnClick = () => {
+        this.setState( state => ({
+            isFormSubmited: !state.isFormSubmited,
+            isPreviewMode: !state.isPreviewMode
+        }));
+    }
+
+    // Function that push state onto Form Component
+    onFormInitialize = () => {
+        return this.state;
+    }
+
+    // Function that generate tickets from the amount given 
     generateTickets() {
         var wrappers = [];
         var counter = 1;
         
         // If quantity is empty
-        if( !this.state.quantity ) {
+        if( !this.state.quantity || this.state.isPreviewMode ) {
 
             wrappers.push(
                 <Wrapper key="0">
@@ -85,10 +110,19 @@ class App extends React.Component {
         return (
             <div className="App">
                 <h1 className="text-center">Ticket Generator</h1>
-                <Form 
-                    onInputsChange = {this.onInputsChange}
-                    onFormSubmit = {this.onFormSubmit}    
-                />
+                { ( this.state.isFormSubmited ) ? (
+                    <div className="text-center hide-on-print" style = {{marginBottom: "2rem"}}>
+                        <button className="btn" onClick={this.onBtnClick}>
+                            Back to edit
+                        </button>
+                    </div>
+                ) : (
+                    <Form
+                        onInputsChange = {this.onInputsChange}
+                        onFormSubmit = {this.onFormSubmit} 
+                        onFormInitialize = {this.onFormInitialize}   
+                    />
+                )}
                 <section className="tickets">
                     {this.generateTickets()}
                 </section>

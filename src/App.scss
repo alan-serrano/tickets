@@ -50,8 +50,24 @@ h1 {
     }
 }
 
-/* Visibility and display */
+/* Elements */
 
+//Button
+.btn {
+    padding: 5px 15px;
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($color: #28a745, $amount: 10);
+        border-color: darken($color: #28a745, $amount: 10) ;
+    }
+}
+
+/* Visibility and display */
 .visible {
     visibility: visible !important;
 }
@@ -70,4 +86,17 @@ h1 {
 
 .d-none {
     display: none !important;
+}
+
+/* Text formatting */
+.text-center {
+    text-align: center;
+}
+
+/* Hide on print */
+
+.hide-on-print {
+    @media print {
+        display: none;
+    }
 }

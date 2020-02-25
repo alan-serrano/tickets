@@ -1,0 +1,102 @@
+/* General Styles of the App*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.container {
+    max-width: 1080px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// General styles for printing
+@page {
+    size: Letter;
+}
+
+/* -------------------------- */
+
+.wrapper-tickets {
+    max-width: 8.5in;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media print {
+        page-break-before: always;
+        max-width: none;
+    }
+}
+
+.col {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+h1 {
+    text-align: center;
+
+    @media print {
+        display: none;
+    }
+}
+
+/* Elements */
+
+//Button
+.btn {
+    padding: 5px 15px;
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($color: #28a745, $amount: 10);
+        border-color: darken($color: #28a745, $amount: 10) ;
+    }
+}
+
+/* Visibility and display */
+.visible {
+    visibility: visible !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+/* Text formatting */
+.text-center {
+    text-align: center;
+}
+
+/* Hide on print */
+
+.hide-on-print {
+    @media print {
+        display: none;
+    }
+}
